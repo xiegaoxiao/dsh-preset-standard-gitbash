@@ -10,6 +10,16 @@
 
 老实说，我到现在也没完全确定这到底是 Windows 的问题、PowerShell 的问题，还是 AI 生成 PowerShell 命令时的问题。但结论很简单：**Git Bash 就是好用，那就用它。** 这个 preset 就是把这份「好用」固化下来，让 Agent 每次会话都默认走 Git Bash，少踩一些莫名其妙的坑。
 
+## 效果预览
+
+**在模式选择器中选中「标准模式+gitbash」**（列表最后一项，带对勾）：
+
+![模式选择](images/model-select.png)
+
+**实际对话中，Agent 用 Git Bash 的 `bash` 工具成功执行命令并返回结果**（红框处为 `bash` 工具调用）：
+
+![对话示例](images/chat-example.png)
+
 ## 特性
 
 - 保留 `cordis` 预设的全部能力（自我引用 Cordis 工具集、composition 编辑技能、delegation / workflow / goal / plan-mode 等）。
@@ -24,12 +34,19 @@ dsh-preset-standard-gitbash/
 ├── preset.yml               # 模式显示名称与描述（标准模式+gitbash）
 ├── agent.cordis.yml         # 该 preset 的 Cordis composition（插件行）
 ├── tool-gitbash-v2.mjs      # 本地 Git Bash 工具插件
+├── README.md                # 项目说明（本文件）
+├── INSTALL-AI.md            # 面向 AI 的分步安装指南（可直接交给 AI 执行）
+├── images/                  # README 配图
+│   ├── model-select.png     # 模式选择器截图
+│   └── chat-example.png     # 对话中使用 bash 工具的示例截图
 └── skills/                  # 随 preset 分发的技能（SKILL.md）
     ├── cordis-plugin-development/
     └── editing-cordis-compositions/
 ```
 
 ## 安装
+
+> 想把这个仓库直接交给 AI 让它帮你安装？请看 **[INSTALL-AI.md](INSTALL-AI.md)** —— 一份面向 AI 的分步安装指南，含每条命令的预期输出、验证步骤与常见问题。
 
 将 `cordis-gitbash` 目录放入 DSH 的用户 preset 根目录：
 
