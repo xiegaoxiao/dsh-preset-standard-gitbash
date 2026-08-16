@@ -2,6 +2,14 @@
 
 基于 DeepSeek Harness 官方 `cordis` 预设的自定义 Agent preset，在标准编码代理能力之上增加 **优先使用 Git Bash 而非 PowerShell** 的提示词偏好，并注册一个真正运行 Git Bash 的 `bash` 工具（Windows 下生效，非受限运行）。
 
+## 为什么做这个插件
+
+在使用 DeepSeek Harness 的过程中，Agent 用 PowerShell（`pwsh`）执行命令时**经常出错**——命令莫名其妙地失败，编码、路径、转义问题层出不穷。抱着试试看的心态，我在模式里加了一条「优先使用 Git Bash」的偏好，并注册了一个真正调用 Git Bash 的 `bash` 工具。
+
+结果非常明显：**换到 Git Bash 之后，操作基本上没有再出过错**。
+
+老实说，我到现在也没完全确定这到底是 Windows 的问题、PowerShell 的问题，还是 AI 生成 PowerShell 命令时的问题。但结论很简单：**Git Bash 就是好用，那就用它。** 这个 preset 就是把这份「好用」固化下来，让 Agent 每次会话都默认走 Git Bash，少踩一些莫名其妙的坑。
+
 ## 特性
 
 - 保留 `cordis` 预设的全部能力（自我引用 Cordis 工具集、composition 编辑技能、delegation / workflow / goal / plan-mode 等）。
